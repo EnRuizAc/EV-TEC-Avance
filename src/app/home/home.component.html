@@ -30,20 +30,11 @@
   </div>
   
 <div class="cards-section">
-    <h3>Galería de Imágenes</h3>
     <div *ngFor="let card of cards" class="card" (click)="openModal(card)">
       <img [src]="card.url" alt="Imagen card">
       <div class="card-content">
         <p>{{ card.title }}</p>
       </div>
-    </div>
-  </div>
-  
-  <div *ngIf="isModalOpen" class="modal" (click)="closeModal()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <span class="close-btn" (click)="closeModal()">&times;</span>
-      <img [src]="selectedImage.url" alt="Imagen grande">
-      <p>{{ selectedImage.title }}</p>
     </div>
   </div>
   

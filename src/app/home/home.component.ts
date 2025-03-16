@@ -5,6 +5,9 @@ import { AuthService } from '../auth.service';
 import { PicsumService } from '../picsum.service';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogContentComponent } from '../dialog-content/dialog-content.component';  // Componente para el contenido del modal
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -29,14 +32,18 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked, O
   isModalOpen: boolean = false;
   selectedImage: any = null;
 
-    // Definir las cards (pueden ser imágenes fijas o dinámicas)
-    cards = [
-      { url: 'https://picsum.photos/200/300?random=1', title: 'Imagen 1' },
-      { url: 'https://picsum.photos/200/300?random=2', title: 'Imagen 2' },
-      { url: 'https://picsum.photos/200/300?random=3', title: 'Imagen 3' }
-    ];
+  cards = [
+    { url: 'https://picsum.photos/id/40/500/300?', title: 'Imagen 1' },
+    { url: 'https://picsum.photos/id/169/500/300?', title: 'Imagen 2' },
+    { url: 'https://picsum.photos/id/219/500/300?', title: 'Imagen 3' }
+  ];
 
-  constructor(private authService: AuthService, private picsumService: PicsumService, private router: Router) {}
+  constructor(
+    private authService: AuthService, 
+    private picsumService: PicsumService, 
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.authService.isLoggedIn$.subscribe(loggedIn => {
@@ -108,21 +115,9 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked, O
     });
   }
 
-openModal(card: any): void {
-  this.selectedImage = card;
-  this.isModalOpen = true;
-  document.body.addEventListener('click', this.closeModalOnClickOutside);
-}
-
-closeModal(): void {
-  this.isModalOpen = false;
-  this.selectedImage = null;
-  document.body.removeEventListener('click', this.closeModalOnClickOutside);
-}
-
-closeModalOnClickOutside = (event: MouseEvent): void => {
-  const modalContent = document.querySelector('.modal-content');
-  if (modalContent && !modalContent.contains(event.target as Node)) {
-    this.closeModal();
-  }}
+  openModal(card: any): void {
+    const dialogRef = this.dialog.open(DialogContentComponent, {
+      data: card
+    });
+  }
 }
