@@ -6,7 +6,7 @@ import { PicsumService } from '../picsum.service';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogContentComponent } from '../dialog-content/dialog-content.component';  // Componente para el contenido del modal
+import { DialogContentComponent } from '../dialog-content/dialog-content.component';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

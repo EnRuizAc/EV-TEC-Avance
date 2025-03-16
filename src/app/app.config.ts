@@ -6,6 +6,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+
 
 import { routes } from './app.routes';
 
@@ -19,5 +21,6 @@ export const appConfig: ApplicationConfig = {
     MatDialogModule,
     MatCardModule,
     MatIconModule,
+    CommonModule,
   ]
 };
