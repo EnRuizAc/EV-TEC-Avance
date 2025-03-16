@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="login-container">
+    <h2>Iniciar sesión</h2>
+  
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" formControlName="email" />
+          <div *ngIf="email?.invalid && email?.touched">
+            <small *ngIf="email?.errors?.['required']">Email es obligatorio</small>
+            <small *ngIf="email?.errors?.['email']">Formato de email inválido</small>
+            <small *ngIf="email?.errors?.['emailDomainInvalid']">El email debe terminar con ".com"</small>
+          </div>
+        </div>
+      
+        <div>
+          <label for="password">Password:</label>
+          <input 
+            type="password" 
+            id="password" 
+            formControlName="password" 
+            [type]="showPassword ? 'text' : 'password'" 
+          />
+          <button type="button" (click)="togglePasswordVisibility()">👁️</button>
+          <div *ngIf="password?.invalid && password?.touched">
+            <small *ngIf="password?.errors?.['required']">Contraseña es obligatoria</small>
+            <small *ngIf="password?.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres</small>
+            <small *ngIf="password?.errors?.['passwordStrengthInvalid']">La contraseña debe incluir una mayúscula, una minúscula, un número y un carácter especial</small>
+          </div>
+        </div>
+      
+        <div>
+          <button type="submit" [disabled]="loginForm.invalid">Login</button>
+        </div>
+      </form>
+      
+  </div>
+  

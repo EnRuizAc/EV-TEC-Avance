@@ -1,9 +1,11 @@
 <header>
     <nav class="navbar">
-      <a href="/">Home</a>
-      <a href="/login">Login</a>
-      <a href="/listado">Listado</a>
-      <a href="/skills">Skills</a>
+      <a routerLink="/">Home</a>
+      <a routerLink="/listado">Listado</a>
+      <a routerLink="/skills">Skills</a>
+
+      <a routerLink="/login" *ngIf="!isLoggedIn">Login</a>
+      <a routerLink="/" *ngIf="isLoggedIn" (click)="logout()">Cerrar sesión</a>
     </nav>
   </header>
   
