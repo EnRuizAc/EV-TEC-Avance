@@ -1,0 +1,30 @@
+.list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .list-item {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  .list-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .pagination {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  @media (max-width: 600px) {
+    .list-item {
+      width: 100%;
+    }
+  }
+  

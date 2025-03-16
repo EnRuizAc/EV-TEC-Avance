@@ -26,6 +26,15 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked, O
   swiper: any;
   selectedItem: any = null;
   isSwiperInitialized: boolean = false;
+  isModalOpen: boolean = false;
+  selectedImage: any = null;
+
+    // Definir las cards (pueden ser imágenes fijas o dinámicas)
+    cards = [
+      { url: 'https://picsum.photos/200/300?random=1', title: 'Imagen 1' },
+      { url: 'https://picsum.photos/200/300?random=2', title: 'Imagen 2' },
+      { url: 'https://picsum.photos/200/300?random=3', title: 'Imagen 3' }
+    ];
 
   constructor(private authService: AuthService, private picsumService: PicsumService, private router: Router) {}
 
@@ -98,4 +107,22 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked, O
       }
     });
   }
+
+openModal(card: any): void {
+  this.selectedImage = card;
+  this.isModalOpen = true;
+  document.body.addEventListener('click', this.closeModalOnClickOutside);
+}
+
+closeModal(): void {
+  this.isModalOpen = false;
+  this.selectedImage = null;
+  document.body.removeEventListener('click', this.closeModalOnClickOutside);
+}
+
+closeModalOnClickOutside = (event: MouseEvent): void => {
+  const modalContent = document.querySelector('.modal-content');
+  if (modalContent && !modalContent.contains(event.target as Node)) {
+    this.closeModal();
+  }}
 }

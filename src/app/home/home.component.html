@@ -6,21 +6,17 @@
       <p>Por favor, inicie sesión para continuar.</p>
     </div>
 
-  
-<!-- Carrusel Swiper -->
-<div class="swiper mySwiper">
+  <div class="swiper mySwiper">
     <div class="swiper-wrapper">
       <div *ngFor="let image of images" class="swiper-slide">
         <img [src]="image.url" alt="Picsum Image">
       </div>
     </div>
-    <!-- Paginación y navegación -->
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </div>
   
-  <!-- Paginación con botones de "Previous" y "Next", y bolitas de las páginas -->
   <div class="pagination">
     <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
     <div class="page-indicators">
@@ -33,8 +29,25 @@
     <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
   </div>
   
-
-    <!-- Sección Acerca de Nosotros -->
+<div class="cards-section">
+    <h3>Galería de Imágenes</h3>
+    <div *ngFor="let card of cards" class="card" (click)="openModal(card)">
+      <img [src]="card.url" alt="Imagen card">
+      <div class="card-content">
+        <p>{{ card.title }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="isModalOpen" class="modal" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close-btn" (click)="closeModal()">&times;</span>
+      <img [src]="selectedImage.url" alt="Imagen grande">
+      <p>{{ selectedImage.title }}</p>
+    </div>
+  </div>
+  
+  
     <div class="about-us">
         <h3>Acerca de Nosotros</h3>
         <p>Somos una plataforma dedicada a brindar la mejor experiencia al usuario.</p>
@@ -44,7 +57,6 @@
         <button (click)="navigateToListado()">Agregar diseño</button>
     </div>
 
-    <!-- Mostrar la imagen seleccionada -->
     <div *ngIf="selectedItem" class="selected-item">
         <h3>Selección</h3>
         <img [src]="selectedItem.url" alt="Imagen seleccionada">
