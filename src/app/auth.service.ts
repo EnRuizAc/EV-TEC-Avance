@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PicsumService } from './picsum.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.checkLoginStatus());
 
-  constructor() {}
+  constructor(private picsumService: PicsumService) {}
 
   checkLoginStatus(): boolean {
     return localStorage.getItem('email') !== null;
@@ -27,5 +28,6 @@ export class AuthService {
     localStorage.removeItem('email');
     localStorage.removeItem('password');
     this.isLoggedInSubject.next(false);
+    this.picsumService.clearSelection();
   }
 }

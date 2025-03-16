@@ -1,5 +1,6 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterViewChecked, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { PicsumService } from '../picsum.service';
 import Swiper from 'swiper';
@@ -15,16 +16,18 @@ import 'swiper/css/pagination';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
   isLoggedIn: boolean = false;
   userEmail: string | null = null;
-  images: string[] = [];
+  images: any[] = [];
   currentPage: number = 1;
   totalImages: number = 30;
   totalPages: number = 6;
   swiper: any;
+  selectedItem: any = null;
+  isSwiperInitialized: boolean = false;
 
-  constructor(private authService: AuthService, private picsumService: PicsumService) {}
+  constructor(private authService: AuthService, private picsumService: PicsumService, private router: Router) {}
 
   ngOnInit(): void {
     this.authService.isLoggedIn$.subscribe(loggedIn => {
@@ -34,25 +37,28 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     });
 
-    // Obtener una página aleatoria y cargar las imágenes
     this.loadImages(this.picsumService.getRandomPage(this.totalPages));
-  }
 
-  ngAfterViewInit(): void {
-    this.swiper = new Swiper('.swiper', {
-      modules: [Navigation, Pagination],
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      }
+    this.picsumService.selectedItem$.subscribe(item => {
+      this.selectedItem = item;
     });
   }
 
-  // Método para cargar las imágenes con paginación desde el servicio
+  ngAfterViewInit(): void {
+    this.initSwiper();
+  }
+
+  ngAfterViewChecked(): void {
+    if (!this.isSwiperInitialized && this.images.length > 0) {
+      this.initSwiper();
+      this.isSwiperInitialized = true;
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.picsumService.clearSelection();
+  }
+
   loadImages(page: number = 1): void {
     this.picsumService.getImages(page, 5).subscribe((response) => {
       this.images = this.picsumService.transformImages(response);
@@ -65,10 +71,31 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // Método para navegar entre las páginas
   goToPage(page: number): void {
     if (page >= 1 && page <= this.totalPages) {
       this.loadImages(page);
     }
+  }
+
+  navigateToListado(): void {
+    this.router.navigate(['/listado']);
+  }
+
+  private initSwiper(): void {
+    if (this.swiper) {
+      this.swiper.destroy(true, true);
+    }
+    
+    this.swiper = new Swiper('.swiper', {
+      modules: [Navigation, Pagination],
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      }
+    });
   }
 }

@@ -1,1 +1,13 @@
-<p>listado works!</p>
+<div class="list-container">
+    <div *ngFor="let item of items" class="list-item" (click)="selectItem(item)">
+      <img [src]="item.url" alt="Image">
+      <p>{{ item.author }}</p>
+    </div>
+  </div>
+  
+  <div class="pagination">
+    <button (click)="changePage(-1)" [disabled]="currentPage === 1">Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button (click)="changePage(1)" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+  

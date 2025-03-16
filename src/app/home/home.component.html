@@ -1,17 +1,17 @@
 <div class="home-container">
-    <!-- Sección de saludo -->
     <div *ngIf="isLoggedIn" class="greeting">
       <p>¡Hola, {{ userEmail }}! Bienvenido de nuevo.</p>
     </div>
     <div *ngIf="!isLoggedIn" class="greeting">
       <p>Por favor, inicie sesión para continuar.</p>
     </div>
+
   
 <!-- Carrusel Swiper -->
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
       <div *ngFor="let image of images" class="swiper-slide">
-        <img [src]="image" alt="Picsum Image">
+        <img [src]="image.url" alt="Picsum Image">
       </div>
     </div>
     <!-- Paginación y navegación -->
@@ -33,30 +33,21 @@
     <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
   </div>
   
-  
-    <!-- Sección con Cards -->
-    <div class="cards-section">
-      <h3>Cards</h3>
-      <div class="card">
-        <img src="https://via.placeholder.com/200x150" alt="Card Image" />
-        <div class="card-content">
-          <h4>Card Title</h4>
-          <p>Some description about the card.</p>
-          <!-- <button (click)="openModal()">Ver imagen grande</button> -->
-        </div>
-      </div>
-      <!-- Puedes agregar más cards aquí -->
-    </div>
-  
-    <!-- Sección acerca de nosotros -->
+
+    <!-- Sección Acerca de Nosotros -->
     <div class="about-us">
-      <h3>Acerca de Nosotros</h3>
-      <p>Somos una plataforma dedicada a brindar la mejor experiencia al usuario. Nuestra misión es...</p>
+        <h3>Acerca de Nosotros</h3>
+        <p>Somos una plataforma dedicada a brindar la mejor experiencia al usuario.</p>
     </div>
-  
-    <!-- Botón que lleva al listado -->
+
     <div class="list-button">
-      <!-- <button (click)="navigateToListado()">Agregar diseño</button> -->
+        <button (click)="navigateToListado()">Agregar diseño</button>
     </div>
-  </div>
-  
+
+    <!-- Mostrar la imagen seleccionada -->
+    <div *ngIf="selectedItem" class="selected-item">
+        <h3>Selección</h3>
+        <img [src]="selectedItem.url" alt="Imagen seleccionada">
+        <p>{{ selectedItem.author }}</p>
+    </div>
+</div>
