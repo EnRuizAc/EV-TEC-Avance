@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { routes } from './app.routes';
+import { provideIonicAngular } from '@ionic/angular/standalone';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,6 +22,6 @@ export const appConfig: ApplicationConfig = {
     MatDialogModule,
     MatCardModule,
     MatIconModule,
-    CommonModule,
+    CommonModule, provideIonicAngular({}),
   ]
 };
