@@ -28,10 +28,12 @@
           </div>
         </div>
       
+        <div *ngIf="email?.valid && password?.valid && loginForm?.dirty">
+          <p class="success-message">¡Datos correctos! Puedes iniciar sesión.</p>
+        </div>
+
         <div>
           <button type="submit" [disabled]="loginForm.invalid">Login</button>
         </div>
-      </form>
-      
-  </div>
-  
+    </form>
+</div>
