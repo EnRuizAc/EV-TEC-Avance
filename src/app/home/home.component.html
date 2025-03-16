@@ -3,7 +3,7 @@
       <p>¡Hola, {{ userEmail }}! Bienvenido de nuevo.</p>
     </div>
     <div *ngIf="!isLoggedIn" class="greeting">
-      <p>Por favor, inicie sesión para continuar.</p>
+      <p>¡Hola! Inicie sesión.</p>
     </div>
 
   <div class="swiper mySwiper">
@@ -18,7 +18,10 @@
   </div>
   
   <div class="pagination">
-    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+      Previous Page
+    </button>
+  
     <div class="page-indicators">
       <span *ngFor="let page of [].constructor(totalPages); let i = index">
         <button (click)="goToPage(i + 1)" [class.active]="i + 1 === currentPage">
@@ -26,8 +29,12 @@
         </button>
       </span>
     </div>
-    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+  
+    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">
+      Next Page
+    </button>
   </div>
+  
   
 <div class="cards-section">
     <div *ngFor="let card of cards" class="card" (click)="openModal(card)">

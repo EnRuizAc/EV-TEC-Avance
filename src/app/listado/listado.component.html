@@ -1,6 +1,10 @@
-<div class="list-container">
+<div class="list-container" [ngClass]="{ 'loading': loading }">
+    <div *ngIf="loading" class="loading-spinner">🔄</div>
+  
     <div *ngFor="let item of items" class="list-item" (click)="selectItem(item)">
-      <img [src]="item.url" alt="Image">
+      <div class="image-container">
+        <img [src]="item.url" alt="Image">
+      </div>
       <p>{{ item.author }}</p>
     </div>
   </div>

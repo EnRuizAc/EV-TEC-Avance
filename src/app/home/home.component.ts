@@ -33,9 +33,9 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked, O
   selectedImage: any = null;
 
   cards = [
-    { url: 'https://picsum.photos/id/40/500/300?', title: 'Imagen 1' },
-    { url: 'https://picsum.photos/id/169/500/300?', title: 'Imagen 2' },
-    { url: 'https://picsum.photos/id/219/500/300?', title: 'Imagen 3' }
+    { url: 'https://picsum.photos/id/40/500/300?', title: 'Conejo' },
+    { url: 'https://picsum.photos/id/169/500/300?', title: 'Zorros' },
+    { url: 'https://picsum.photos/id/219/500/300?', title: 'Felino' }
   ];
 
   constructor(
@@ -62,6 +62,12 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked, O
 
   ngAfterViewInit(): void {
     this.initSwiper();
+    setTimeout(() => {
+      const selectedItem = document.querySelector('.selected-item');
+      if (selectedItem) {
+        selectedItem.classList.add('show');
+      }
+    }, 100);
   }
 
   ngAfterViewChecked(): void {

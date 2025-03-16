@@ -4,67 +4,53 @@
     </div>
   
     <div *ngFor="let skill of skills" class="skill">
-      <div class="skill-name">{{ skill.name }}</div>
-      <div class="skill-bar">
-        <div class="skill-fill" [style.width]="skill.progress + '%'" class="skill-fill"></div>
-      </div>
+        <div class="skill-name">{{ skill.name }}</div>
+        <div class="skill-bar">
+            <div class="skill-fill" [style.width]="skill.progress + '%'" class="skill-fill"></div>
+        </div>
     </div>
+    
+      
   
     <div id="skills-text" class="reveal-text" [class.visible]="isVisible">
       <h2>Animación simple</h2>
     </div>
   
     <div class="circle-container">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-      </div>
-
-    <div class="flip-container">
-      <div class="flip-card" (mouseenter)="rotateCard($event)" (mouseleave)="resetRotation($event)">
-        <div class="flip-card-front">
-          Tarjeta 1
-        </div>
-        <div class="flip-card-back">
-          Vuelta 1
-        </div>
-      </div>
-
-      <div class="circle-container">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-      </div>
-  
-      <div class="flip-card" (mouseenter)="rotateCard($event)" (mouseleave)="resetRotation($event)">
-        <div class="flip-card-front">
-          Tarjeta 2
-        </div>
-        <div class="flip-card-back">
-          Vuelta 2
-        </div>
-      </div>
-
-      <div class="circle-container">
-        <div class="circle"></div>
-        <div class="circle"></div>
-      </div>
-
-      <div class="flip-card" (mouseenter)="rotateCard($event)" (mouseleave)="resetRotation($event)">
-        <div class="flip-card-front">
-          Tarejta 3
-        </div>
-        <div class="flip-card-back">
-          Vuelta 3
-        </div>
-      </div>
-
-      <div class="circle-container">
-        <div class="circle"></div>
-      </div>
-
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
     </div>
   
+    <div class="flip-container">
+        <div class="flip-card" (mouseenter)="rotateCard($event)" (mouseleave)="resetRotation($event)">
+            <div class="flip-card-front">
+                Tarjeta 1
+            </div>
+            <div class="flip-card-back">
+                Vuelta 1
+            </div>
+        </div>
+    
+        <div class="flip-card" (mouseenter)="rotateCard($event)" (mouseleave)="resetRotation($event)">
+            <div class="flip-card-front">
+                Tarjeta 2
+            </div>
+            <div class="flip-card-back">
+                Vuelta 2
+            </div>
+        </div>
+    
+        <div class="flip-card" (mouseenter)="rotateCard($event)" (mouseleave)="resetRotation($event)">
+            <div class="flip-card-front">
+                Tarjeta 3
+            </div>
+            <div class="flip-card-back">
+                Vuelta 3
+            </div>
+        </div>
+    </div>
+    
   </div>
   

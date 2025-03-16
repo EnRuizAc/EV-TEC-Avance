@@ -31,11 +31,12 @@ export class SkillsComponent {
 
   rotateCard(event: MouseEvent) {
     const card = event.target as HTMLElement;
-    card.style.transform = 'rotateY(180deg)';
-  }
+    card.style.transform = 'rotateY(180deg)'; 
+}
 
-  resetRotation(event: MouseEvent) {
+resetRotation(event: MouseEvent) {
     const card = event.target as HTMLElement;
     card.style.transform = 'rotateY(0deg)';
-  }
+}
+
 }

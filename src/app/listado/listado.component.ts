@@ -14,6 +14,7 @@ export class ListadoComponent implements OnInit {
   items: any[] = [];
   currentPage: number = 1;
   totalPages: number = 6;
+  loading: boolean = false;
 
   constructor(private picsumService: PicsumService, private router: Router) {}
 
@@ -23,8 +24,10 @@ export class ListadoComponent implements OnInit {
   }
 
   loadItems(page: number): void {
+    this.loading = true;
     this.picsumService.getImages(page, 10).subscribe(response => {
       this.items = this.picsumService.transformImages(response);
+      this.loading = false;
     });
   }
 

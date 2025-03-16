@@ -1,6 +1,23 @@
 :root {
     color-scheme: light dark;
-}
+    --btn-bg: #f0f0f0;
+    --btn-text: #333;
+    --btn-hover-bg: #007bff;
+    --btn-disabled-bg: #ccc;
+    --active-bg: #007bff;
+    --active-text: #fff;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --btn-bg: #222;
+      --btn-text: #fff;
+      --btn-hover-bg: #0095ff;
+      --btn-disabled-bg: #444;
+      --active-bg: #0095ff;
+      --active-text: #fff;
+    }
+  }
 
 html, body {
     height: 100%;
