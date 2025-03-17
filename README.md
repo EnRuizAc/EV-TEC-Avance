@@ -1,10 +1,10 @@
 # AngularLoginApp
 
--Se han cumplido con prácticamente todos los requisitos
--Se ha hecho de Angular Material para el carrusel de imágenes
--Se ha agregado responsividad en la páginay animaciones
--Se consumen las imágenes desde un endpoint
--El sistema de login funciona adecuadamente
+- Se han cumplido con prácticamente todos los requisitos
+- Se ha hecho de Angular Material para el carrusel de imágenes
+- Se ha agregado responsividad en la páginay animaciones
+- Se consumen las imágenes desde un endpoint
+- El sistema de login funciona adecuadamente
 
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
