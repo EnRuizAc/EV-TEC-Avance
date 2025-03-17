@@ -30,13 +30,12 @@ export class SkillsComponent {
   }
 
   rotateCard(event: MouseEvent) {
-    const card = event.target as HTMLElement;
+    const card = event.currentTarget as HTMLElement;
     card.style.transform = 'rotateY(180deg)'; 
-}
+  }
 
-resetRotation(event: MouseEvent) {
-    const card = event.target as HTMLElement;
+  resetRotation(event: MouseEvent) {
+    const card = event.currentTarget as HTMLElement;
     card.style.transform = 'rotateY(0deg)';
-}
-
+  }
 }

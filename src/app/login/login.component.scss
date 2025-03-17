@@ -1,7 +1,6 @@
-/* login.component.scss */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
-/* Estilos generales para el formulario */
-form {
+.login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,45 +11,82 @@ form {
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: var(--background-color, #fff);
-  }
-  
-  h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+h2 {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
-  }
-  
-  /* Estilo para los inputs */
-  input {
+}
+
+.input-container {
+    width: 100%;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+input {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     background-color: #f9f9f9;
     transition: border-color 0.3s ease-in-out;
-  }
-  
-  input:focus {
+    box-sizing: border-box;
+}
+
+input:focus {
     border-color: #007bff;
     outline: none;
-  }
-  
-  /* Estilo para los mensajes de error */
-  small {
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    padding-right: 40px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+    transition: color 0.3s ease-in-out;
+}
+
+.password-toggle:hover {
+    color: #007bff;
+}
+
+small {
     color: red;
     font-size: 12px;
     margin-top: 5px;
     display: block;
-  }
-  
-  small + small {
-    margin-top: 2px;
-  }
-  
-  /* Estilo para el botón de submit */
-  button {
+}
+
+.success-message {
+    color: green;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+button {
     padding: 12px;
     background-color: #007bff;
     color: #fff;
@@ -60,59 +96,58 @@ form {
     font-size: 16px;
     transition: background-color 0.3s ease;
     width: 100%;
-  }
-  
-  button:disabled {
+}
+
+button:disabled {
     background-color: #ccc;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #0056b3;
-  }
-  
-  /* Estilo para la visibilidad de la contraseña */
-  .password-toggle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-top: 10px;
-  }
-  
-  .password-toggle label {
-    font-size: 14px;
-    color: #555;
-    cursor: pointer;
-  }
-  
-  /* Dark mode - cuando el color-scheme es dark */
-  @media (prefers-color-scheme: dark) {
-    form {
-      background-color: #333;
-      color: #fff;
-      border-color: #444;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
     }
-  
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success-message,
+small {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@media (prefers-color-scheme: dark) {
+    .login-container {
+        background-color: #333;
+        color: #fff;
+        border-color: #444;
+    }
+
     input {
-      background-color: #444;
-      color: #fff;
-      border-color: #555;
+        background-color: #444;
+        color: #fff;
+        border-color: #555;
     }
-  
+
     input:focus {
-      border-color: #007bff;
+        border-color: #007bff;
     }
-  
+
     small {
-      color: #ff4d4d;
+        color: #ff4d4d;
     }
-  
+
     button {
-      background-color: #0056b3;
+        background-color: #0056b3;
     }
-  
+
     button:hover {
-      background-color: #004085;
+        background-color: #004085;
     }
-  }
-  
+}

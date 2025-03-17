@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
 .skills-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin: 20px;
+    font-family: 'Playfair Display', serif;
 }
 
 .neon-text {
@@ -67,14 +70,16 @@
     width: 0%;
 }
 
-
+.skill-fill.animated {
+    animation: fillBar 1.5s ease-in-out forwards;
+}
 
 @keyframes fillBar {
     from {
         width: 0%;
     }
     to {
-        width: 100%;
+        width: var(--progress);
     }
 }
 
@@ -123,24 +128,26 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: center;
+}
+
+.flip-wrapper {
+    width: 200px;
+    height: 200px;
+    position: relative;
 }
 
 .flip-card {
-    width: 200px;
-    height: 200px;
-    background-color: #fff;
-    border-radius: 10px;
+    width: 100%;
+    height: 100%;
     transform-style: preserve-3d;
-    transition: transform 0.6s;
-    cursor: pointer;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.6s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-.flip-card:hover {
+.flip-wrapper:hover .flip-card {
     transform: rotateY(180deg);
 }
 
@@ -150,33 +157,26 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .flip-card .flip-card-front {
     background-color: #2980b9;
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s;
 }
 
 .flip-card .flip-card-back {
     background-color: #4caf50;
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transform: rotateY(180deg);
 }
 
-.flip-card:hover .flip-card-front {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-back {
-    transform: rotateY(180deg);
-}
 
 @media (max-width: 768px) {
     .skills-container {

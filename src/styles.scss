@@ -6,32 +6,37 @@
     --btn-disabled-bg: #ccc;
     --active-bg: #007bff;
     --active-text: #fff;
-  }
-  
-  @media (prefers-color-scheme: dark) {
+}
+
+@media (prefers-color-scheme: dark) {
     :root {
-      --btn-bg: #222;
-      --btn-text: #fff;
-      --btn-hover-bg: #0095ff;
-      --btn-disabled-bg: #444;
-      --active-bg: #0095ff;
-      --active-text: #fff;
+        --btn-bg: #222;
+        --btn-text: #fff;
+        --btn-hover-bg: #0095ff;
+        --btn-disabled-bg: #444;
+        --active-bg: #0095ff;
+        --active-text: #fff;
     }
-  }
+}
 
 html, body {
-    height: 100%;
     margin: 0;
+    padding: 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
-  }
-  
-  app-root {
+    overflow-x: hidden;
+}
+
+app-root {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .main-content {
+    height: 100vh;
+}
+
+.main-content {
     flex: 1;
-  }
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
